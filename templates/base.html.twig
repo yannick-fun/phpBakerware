@@ -7,6 +7,52 @@
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
+            <style>
+                body {
+                    font-family: 'Trebuchet MS', sans-serif;
+                }
+                .wrapper {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                .table {
+                    border-collapse: collapse;
+                    margin: 25px 0;
+                    font-size: 0.9em;
+                    font-family: sans-serif;
+                    width: 80%;
+                    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+                }
+
+                .table thead tr {
+                    background-color: #009879;
+                    color: #ffffff;
+                    text-align: left;
+                }
+
+                .table th,
+                .table td {
+                    padding: 12px 45px;
+                }
+
+                .table tbody tr {
+                    border-bottom: 1px solid #dddddd;
+                }
+
+                .table tbody tr:nth-of-type(even) {
+                    background-color: #f3f3f3;
+                }
+
+                .table tbody tr:last-of-type {
+                    border-bottom: 2px solid #009879;
+                }
+
+                .table tbody tr.active-row {
+                    font-weight: bold;
+                    color: #009879;
+                }
+            </style>
         {% endblock %}
 
         {% block javascripts %}

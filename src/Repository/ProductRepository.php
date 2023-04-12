@@ -1,9 +1,11 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Repository;
 
 use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -36,6 +38,22 @@ class ProductRepository extends ServiceEntityRepository
 
         if ($flush) {
             $this->getEntityManager()->flush();
+        }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function findHighestPriceProduct(): mixed
+    {
+        $qb = $this->createQueryBuilder('e')
+            ->select('e')
+            ->orderBy('e.price', 'DESC')
+            ->setMaxResults(1);
+        try {
+            return $qb->getQuery()->getOneOrNullResult();
+        } catch (NonUniqueResultException $e) {
+            return null;
         }
     }
 
