@@ -52,8 +52,14 @@ class Product
     #[ORM\Column]
     private ?int $stock = null;
 
+    /**
+     * @var string|null
+     * Product code of the product
+     */
     #[ORM\Column(length: 255)]
     private ?string $code = null;
+
+    private string $identifier;
 
     public function getId(): ?int
     {
@@ -118,5 +124,15 @@ class Product
         $this->code = $code;
 
         return $this;
+    }
+
+    public function getIdentifier(): string
+    {
+        return $this->identifier;
+    }
+
+    public function setIdentifier(string $identifier): void
+    {
+        $this->identifier = $identifier;
     }
 }
