@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product{% endblock %}
+
+{% block body %}
+
+<div class="wrapper">
+    <h1>All Products</h1>
+</div>
+<div class="wrapper">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Product code</th>
+            <th>Identifier</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.Id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.description }}</td>
+                <td>€ {{ product.price }},-</td>
+                <td>{{ product.stock }}</td>
+                <td>{{ product.code }}</td>
+                <td>{{ product.identifier }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="wrapper">
+    <h1>Highest Priced Product</h1>
+</div>
+<div class="wrapper">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Product code</th>
+            <th>Identifier</th>
+
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ highestPriceProduct.Id }}</td>
+                <td>{{ highestPriceProduct.name }}</td>
+                <td>{{ highestPriceProduct.description }}</td>
+                <td>€ {{ highestPriceProduct.price }},-</td>
+                <td>{{ highestPriceProduct.stock }}</td>
+                <td>{{ highestPriceProduct.code }}</td>
+                <td>{{ highestPriceProduct.identifier }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
